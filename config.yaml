@@ -1,0 +1,13 @@
+network: case14            # pandapower IEEE 14-bus
+peak_mw: 259
+days: [summer, winter]
+participation: [0.1, 0.3, 0.5]
+elasticity:                # self-elasticity by customer class
+  residential: -0.15
+  commercial: -0.10
+  industrial: -0.05
+cross_elasticity_ratio: 0.3   # |cross| as a fraction of |self|, neighbouring hours
+customer_mix: {residential: 0.40, commercial: 0.35, industrial: 0.25}   # ASSUMPTION - replace with DISCOM data
+renewable_penetration: 0.20   # solar+wind capacity as share of peak load (base case)
+scenarios: [S0_flat, S1_TOU, S2_RTP, S3_CPP, S4_RTP_highRE]
+generator_costs: literature   # literature | india

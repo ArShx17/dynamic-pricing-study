@@ -1,0 +1,14 @@
+﻿
+summer: gross peak 259 MW @h15 | NET peak 241 MW @h22
+  TOU                      gross peak  -0.38% | net peak  +0.03% (hr 22) | bill  -0.1%
+  RTP (market shape, RN)   gross peak  -0.90% | net peak  +0.87% (hr 22) | bill  -0.3%
+  CPP (RN)                 gross peak  -0.95% | net peak  -1.48% (hr 22) | bill  -1.1%
+  RTP-net                  gross peak  +0.94% | net peak  +2.22% (hr 22) | bill  -0.3%
+  CPP-net                  gross peak  -0.62% | net peak  +1.77% (hr 20) | bill  -0.9%
+
+winter: gross peak 220 MW @h12 | NET peak 192 MW @h18
+  TOU                      gross peak  -0.22% | net peak  +0.28% (hr 12) | bill  -0.0%
+  RTP (market shape, RN)   gross peak  -0.06% | net peak  +0.46% (hr 12) | bill  -0.3%
+  CPP (RN)                 gross peak  -0.76% | net peak  -0.35% (hr 12) | bill  -1.1%
+  RTP-net                  gross peak  +0.90% | net peak  +1.03% (hr 18) | bill  -0.2%
+  CPP-net                  gross peak  +1.26% | net peak  +1.64% (hr 13) | bill  -1.0%
