@@ -27,3 +27,9 @@ def set_hour(net, total_load_mw, solar_pu, wind_pu):
     avail = {"solar": net["re_cap"]["solar"] * solar_pu, "wind": net["re_cap"]["wind"] * wind_pu}
     for name, a in avail.items():
         net.sgen.loc[net.sgen.name == name, "max_p_mw"] = a
+
+
+def set_line_ratings(net, rating_ka):
+    """Apply thermal ratings (kA) to the 15 lines; 100% loading = rating."""
+    net.line["max_i_ka"] = rating_ka
+    net.line["max_loading_percent"] = 100.0

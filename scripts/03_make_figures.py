@@ -12,6 +12,6 @@ plotting.fig_peak_bars(df, cfg, out / "fig3_net_peak_bars.png")
 plotting.fig_participation(df, cfg, out / "fig4_participation_sweep.png")
 
 s = df[(df.participation == 0.3) & (df.re_penetration == cfg["renewable_penetration"])]
-cols = ["day", "scheme", "peak_MW", "load_factor", "PAR", "peak_reduction_pct", "net_peak_reduction_pct", "cost_change_pct", "bill_change_pct"]
+cols = ["day", "scheme", "peak_MW", "load_factor", "PAR", "peak_reduction_pct", "net_peak_reduction_pct", "cost_change_pct", "bill_change_pct", "line_loading_max_pct", "v_min_pu", "v_max_pu"]
 s[cols].to_csv("results/tables/summary_30pct.csv", index=False)
 print("Saved 4 figures to paper/figures and results/tables/summary_30pct.csv")
