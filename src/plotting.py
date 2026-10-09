@@ -57,3 +57,14 @@ def fig_participation(df, cfg, path):
             a.plot(t.participation * 100, t.net_peak_reduction_pct, "o-", color=COLOR[s], label=LABEL[s])
         a.axhline(0, color="k", lw=.8); a.set(title=day.capitalize(), xlabel="Participation (%)", ylabel="Net peak reduction (%)"); a.grid(alpha=.3)
     ax[0].legend(fontsize=8); fig.tight_layout(); fig.savefig(path, dpi=200); plt.close(fig)
+
+
+def fig_sensitivity(sens, cfg, sweep, xlabel, path):
+    d = sens[sens.sweep == sweep]
+    fig, ax = plt.subplots(1, 2, figsize=(12, 4))
+    for a, day in zip(ax, cfg["days"]):
+        for s in LABEL:
+            t = d[(d.day == day) & (d.scheme == s)].sort_values("value")
+            a.plot(t.value, t.net_peak_reduction_pct, "o-", color=COLOR[s], label=LABEL[s])
+        a.axhline(0, color="k", lw=.8); a.set(title=day.capitalize(), xlabel=xlabel, ylabel="Net peak reduction (%)"); a.grid(alpha=.3)
+    ax[0].legend(fontsize=8); fig.tight_layout(); fig.savefig(path, dpi=200); plt.close(fig)
