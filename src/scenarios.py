@@ -38,7 +38,7 @@ def _run(cfg, day, scheme, part, pen, cache):
             "bill": (N * p).sum(), "curtailed_MWh": d.curtailed_MW.sum(), "re_used_MWh": d.re_used_MW.sum(),
             "_base_peak": L.max(), "_base_net_peak": NL.max(), "_base_bill": (L * flat).sum()}
 
-def run_all(cfg):
+def run_all(cfg, out_file=None):
     cache, rows = {}, []
     base_pen = cfg["renewable_penetration"]; high_pen = cfg.get("high_re_penetration", 0.5)
     for day in cfg["days"]:
@@ -58,8 +58,9 @@ def run_all(cfg):
     df["cost_change_pct"] = [100 * (c - base.loc[k, "daily_cost"]) / base.loc[k, "daily_cost"] for c, k in zip(df.daily_cost, key)]
     df["bill_change_pct"] = 100 * (df.bill - df._base_bill) / df._base_bill
     df = df.drop(columns=["_base_peak", "_base_net_peak", "_base_bill"]).round(3)
-    out = ROOT / "results" / "tables"; out.mkdir(parents=True, exist_ok=True)
-    df.to_csv(out / "results.csv", index=False)
+    target = Path(out_file) if out_file else ROOT / "results" / "tables" / "results.csv"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(target, index=False)
     show = ["day", "scheme", "participation", "re_penetration", "peak_reduction_pct", "net_peak_reduction_pct", "cost_change_pct", "bill_change_pct", "curtailed_MWh"]
     print(df[show].to_string(index=False))
     return df
